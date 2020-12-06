@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+body{
+    margin: 0;
+    font-size: 14px;
+    font-family: "Montserrat";
+    background-color: rgb(190, 251, 251);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.page1{
+    min-height: 80px;
+    background-color: rgb(88, 208, 208);
+    text-align: center;
+    padding-top: 25px;
+    border-bottom: 3px solid rgb(22, 174, 174);
+}
+
+.title{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.page2{
+    text-align: center;
+    justify-content: left;
+    max-width: 50%;
+}
+p{
+    padding-bottom: 10px;
+}
+
+.note{
+    background-color: rgb(162, 226, 226);
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border: 1px solid rgb(22, 174, 174);
+    align-content: center; 
+    text-align: center;
+    justify-content: center;
+    padding: 30px;
+}
+label{
+    float: left;
+    padding-bottom: 20px;
+}
+ input{
+     
+     width: 150px;
+     height: 30px;
+     float: right;
+     padding-bottom: 15px;
+     outline: none;
+     color: black;
+ }
+ button{
+     width: 100px;
+     outline: 0;
+     border-radius: 10px;
+     background-color: rgb(22, 174, 174);
+     height: 30px;
+     margin-top: 0px;
+ }
+
+ button.btn_add{
+     margin-top: 15px;
+ }
+
+ li{
+     text-align: left;
+     padding: 0;
+     margin: 0;
+ }
+ p .list_item{
+     padding: 0;
+     margin: 0;
+ }

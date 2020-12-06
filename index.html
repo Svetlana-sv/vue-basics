@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Vue.js</title>
+</head>
+
+<body>
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <div class="page1">
+        <span class="title">Форма для учета посещаемости студентов</span>
+    </div>
+
+    <div id="theme">
+        <span v-bind:title="message">Наведите курсор</span>
+    </div>
+
+    <script>
+        var theme = new Vue({
+            el: '#theme',
+            data: {
+                message: 'Вы загрузили эту страницу: ' + new Date().toLocaleString()
+            }
+        })
+    </script>
+    <div style="display: flex; align-items: center; align-content: center; justify-content: center; margin-top: 50px;">
+        <div class="page2" id="app2">
+            <div class="note">
+                <h1>Учёт посещаемости</h1>
+                <p>Введите фамилию и имя студентов, присутсвующих на занятии:</p>
+                <div><label>Фамилия</label>
+                    <input v-model="surname" type="text" placeholder="Фамилия" /></div>
+                <div><label>Имя</label>
+                    <input v-model="name" type="text" placeholder="Имя" /></div>
+
+                <center><button v-on:click="students.push(surname+' '+name),setName()" class="btn_add">Добавить</button></center>
+
+
+            </div>
+
+            <ol>
+                <li v-for="student in students">
+                    <p class="list_item">{{student}} <button v-on:click="students(surname,name)" >Удалить</button></p>
+                </li>
+            </ol>
+            <span v-html="cell(surname,name)"></span>
+
+
+
+
+        </div>
+        <script>
+            var app2 = new Vue({
+                el: '#app2',
+                data: {
+                    surname: '',
+                    students: [],
+                    name: ''
+                },
+                methods: {
+                    cell(surname, name) {
+                        console.log(surname, name);
+
+                    },
+                    setName: function(){
+                        this.surname = "";
+                        this.name = "";
+        }
+                }
+            }
+            )
+        </script>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
