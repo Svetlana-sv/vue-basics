@@ -17,35 +17,48 @@
     </div>
 
     <div id="theme">
-        <span v-bind:title="message">Наведите курсор</span>
+        <center><span v-bind:title="message">Наведите курсор</span></center>
     </div>
 
+    <div id="app">
+        <div v-show="visible">
+            <h2>Правила заполнения формы:</h2>
+            <p>Введите фамилию и имя студента, после этого нажмите "Добавить"!</p>
+        </div>
+        <button v-on:click="visible=!visible" style="margin-top: 15px;">{{visible?'Скрыть':'Отобразить'}}</button>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
     <script>
-        var theme = new Vue({
-            el: '#theme',
+        var app = new Vue({
+            el: '#app',
             data: {
-                message: 'Вы загрузили эту страницу: ' + new Date().toLocaleString()
+                visible: true
             }
-        })
+        });
     </script>
+
+
     <div style="display: flex; align-items: center; align-content: center; justify-content: center; margin-top: 50px;">
         <div class="page2" id="app2">
-            <div class="note">
+
+            <form class="note">
                 <h1>Учёт посещаемости</h1>
                 <p>Введите фамилию и имя студентов, присутсвующих на занятии:</p>
                 <div><label>Фамилия</label>
-                    <input v-model="surname" type="text" placeholder="Фамилия" /></div>
+                    <input v-model="surname" required type="text" placeholder="Фамилия" /></div>
                 <div><label>Имя</label>
-                    <input v-model="name" type="text" placeholder="Имя" /></div>
+                    <input required v-model="name" type="text" placeholder="Имя" /></div>
 
-                <center><button v-on:click="students.push(surname+' '+name),setName()" class="btn_add">Добавить</button></center>
+                <center><button v-on:click="if(surname !== '' && name !== ''){students.push(surname+' '+name),setName()}" class="btn_add" type="submit">Добавить</button></center>
+                
+            </form>
 
+          
 
-            </div>
-
+            <p v-if = "students.length == 0">Список пуст</p>
             <ol>
-                <li v-for="student in students">
-                    <p class="list_item">{{student}} <button v-on:click="students(surname,name)" >Удалить</button></p>
+                <li v-for="student in students" v-if="surname!==null">
+                    <p class="list_item">{{student}} <button v-on:click="students.splice(index, 1)">Удалить</button></p>
                 </li>
             </ol>
             <span v-html="cell(surname,name)"></span>
@@ -60,20 +73,33 @@
                 data: {
                     surname: '',
                     students: [],
-                    name: ''
+                    name: '',
+                    on: true
                 },
                 methods: {
                     cell(surname, name) {
                         console.log(surname, name);
 
                     },
-                    setName: function(){
+                    setName: function () {
                         this.surname = "";
                         this.name = "";
-        }
+                    },
+                    on: function () {
+                        return false;
+                    }
+
                 }
-            }
-            )
+            })
+        </script>
+
+        <script>
+            var theme = new Vue({
+                el: '#theme',
+                data: {
+                    message: 'Введите фамилию и имя студента, после этого нажмите "Добавить"!'
+                }
+            })
         </script>
     </div>
 
