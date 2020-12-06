@@ -83,3 +83,16 @@ label{
  #app{
      text-align: center;
  }
+
+ footer{
+    min-height: 80px;
+    background-color: rgb(88, 208, 208);
+    text-align: center;
+    padding-top: 25px;
+    bottom: 0;
+    border-top: 3px solid rgb(22, 174, 174);
+ }
+ footer a{
+     color: #000000;
+     text-decoration: none;
+ }
